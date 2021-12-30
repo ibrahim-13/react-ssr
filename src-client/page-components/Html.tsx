@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { EnumAppAssetDataType, TypeAssetManifest } from "@models/AssetData";
 import { AssetLinkCSS } from "@page-components/AssetLink";
+import { ConfigApp } from "@configs/app";
 
 type PropsHtml = {
   assetManifest: TypeAssetManifest;
@@ -34,7 +35,7 @@ export function Html(props: PropsWithChildren<PropsHtml>): JSX.Element {
         {children}
         <script
           dangerouslySetInnerHTML={{
-            __html: `assetManifest = ${JSON.stringify(assetManifest)};`,
+            __html: `${ConfigApp.AssetsManifestKey} = ${JSON.stringify(assetManifest)};`,
           }}
         />
       </body>
