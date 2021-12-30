@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { ClientApp } from "./App";
-import type { TypeAssetManifest } from "../models";
-import { ConfigApp } from "../configs";
+import type { TypeAssetManifest } from "@models/index";
+import { ConfigApp } from "@configs/app";
 
 const manifest = (window as unknown as { [key: string]: TypeAssetManifest })[
   ConfigApp.AssetsManifestKey

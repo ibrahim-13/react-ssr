@@ -1,5 +1,6 @@
 import { ConfigBuild } from "../configs/build";
 import fs from "fs";
+import path from "path";
 import rimraf from "rimraf";
 import webpack from "webpack";
 
@@ -62,10 +63,14 @@ webpack(
                     runtime: "automatic",
                   },
                 },
-                target: "es2015",
+                target: "es2016",
                 keepClassNames: true,
                 loose: true,
-                baseUrl: __dirname,
+                baseUrl: path.join(__dirname, "..", "src-client"),
+                paths: {
+                  "@page-components/*": ["page-components/*"],
+                  "@models/*": ["../models/*"],
+                },
               },
               module: {
                 type: "commonjs",

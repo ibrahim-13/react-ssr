@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src-client",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,6 +15,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "outDir": "build",
+    "paths": {
+      "@page-components/*": ["page-components/*"],
+      "@models/*": ["../models/*"],
+      "@configs/*": ["../configs/*"]
+    },
     "sourceMap": true
   },
   "exclude": ["node_modules"],
