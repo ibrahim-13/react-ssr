@@ -2,21 +2,21 @@ import React from "react";
 import { TypeAppAssetData, EnumAppAssetDataType } from "@models/AssetData";
 
 type PropsAssets = {
-  assets: TypeAppAssetData[];
+  assets: string[];
 };
 
-export function AssetLink({ assets }: PropsAssets): JSX.Element {
+export function AssetLinkCSS({ assets }: PropsAssets): JSX.Element {
   var links = React.useMemo(
-    () =>
-      assets
-        .map((asset) =>
-          asset.type == EnumAppAssetDataType.CSS ? (
-            <link rel="stylesheet" href={asset.href} />
-          ) : null
-        )
-        .filter((i): i is JSX.Element => i !== null || i !== undefined),
+    () => assets.map((asset) => <link rel="stylesheet" href={asset} />),
     [assets]
   );
-
   return <>{links}</>;
+}
+
+export function AssetLinkJavaScript({ assets }: PropsAssets): JSX.Element {
+  var jsScripts = React.useMemo(
+    () => assets.map((asset) => <script src={asset} />),
+    [assets]
+  );
+  return <>{jsScripts}</>;
 }

@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from "react";
-import type { TypeAssetManifest } from "@models/AssetData";
-import { AssetLink } from "@page-components/AssetLink";
+import React, { PropsWithChildren } from "react";
+import { EnumAppAssetDataType, TypeAssetManifest } from "@models/AssetData";
+import { AssetLinkCSS } from "@page-components/AssetLink";
 
 type PropsHtml = {
   assetManifest: TypeAssetManifest;
@@ -9,13 +9,20 @@ type PropsHtml = {
 
 export function Html(props: PropsWithChildren<PropsHtml>): JSX.Element {
   const { title, assetManifest, children } = props;
+  const assetsCss = React.useMemo(
+    () =>
+      assetManifest.init
+        .filter((i) => i.type === EnumAppAssetDataType.CSS)
+        .map((i) => i.href),
+    [assetManifest]
+  );
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="favicon.ico" />
-        <AssetLink assets={assetManifest.init} />
+        <AssetLinkCSS assets={assetsCss} />
         <title>{title}</title>
       </head>
       <body>
