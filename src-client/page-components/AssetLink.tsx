@@ -1,5 +1,4 @@
 import React from "react";
-import { TypeAppAssetData, EnumAppAssetDataType } from "@models/AssetData";
 
 type PropsAssets = {
   assets: string[];

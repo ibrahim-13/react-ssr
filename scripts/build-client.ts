@@ -49,8 +49,32 @@ webpack(
               jsc: {
                 parser: {
                   syntax: "typescript",
+                  tsx: true,
+                  dynamicImport: true,
                 },
+                transform: {
+                  react: {
+                    pragma: "React.createElement",
+                    pragmaFrag: "React.Fragment",
+                    throwIfNamespace: true,
+                    development: isProduction ? true : false,
+                    useBuiltins: false,
+                    runtime: "automatic",
+                  },
+                },
+                target: "es2015",
+                keepClassNames: true,
+                loose: true,
+                baseUrl: __dirname,
               },
+              module: {
+                type: "commonjs",
+                strict: true,
+                strictMode: true,
+                lazy: false,
+                noInterop: true,
+              },
+              sourceMaps: "inline",
             },
           },
         },
@@ -68,10 +92,10 @@ webpack(
       console.error(err.stack || err);
       process.exit(1);
     }
-    const info = stats.toJson();
-    if (stats.hasErrors()) {
+    const info = stats?.toJson();
+    if (stats?.hasErrors()) {
       console.log("Finished running webpack with errors.");
-      info.errors.forEach((e) => console.error(e));
+      info?.errors?.forEach((e) => console.error(e));
       process.exit(1);
     } else {
       console.log("Finished running webpack.");

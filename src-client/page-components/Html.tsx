@@ -1,7 +1,7 @@
+import { ConfigApp } from "../../configs/app";
+import { EnumAppAssetDataType, TypeAssetManifest } from "../../models/AssetData";
 import React, { PropsWithChildren } from "react";
-import { EnumAppAssetDataType, TypeAssetManifest } from "@models/AssetData";
-import { AssetLinkCSS } from "@page-components/AssetLink";
-import { ConfigApp } from "@configs/app";
+import { AssetLinkCSS } from "./AssetLink";
 
 type PropsHtml = {
   assetManifest: TypeAssetManifest;

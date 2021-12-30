@@ -1,5 +1,5 @@
-import { TypeAssetManifest } from "@models/AssetData";
-import { Html } from "@page-components/Html";
+import { TypeAssetManifest } from "../models/AssetData";
+import { Html } from "./page-components/Html";
 
 type PropsClientApp = {
   assetsManifest: TypeAssetManifest;
