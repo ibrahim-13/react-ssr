@@ -17,8 +17,8 @@
     "outDir": "build",
     "paths": {
       "@page-components/*": ["page-components/*"],
-      "@models/*": ["page-components/../../models/*"],
-      "@configs/*": ["page-components/../../configs/*"]
+      "@models/*": ["../../models/*"],
+      "@configs/*": ["../../configs/*"]
     },
     "sourceMap": true
   },

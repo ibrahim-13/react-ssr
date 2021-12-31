@@ -1,7 +1,8 @@
 import express from "express";
 import type { Request, Response, NextFunction } from "express";
+import { GetRenderedClient } from "./client-renderer";
 
-function handleErrors(fn: (req: Request, res: Response) => Promise<void>) {
+function withErrorHandler(fn: (req: Request, res: Response) => Promise<void>) {
   return async function (req: Request, res: Response, next: NextFunction) {
     try {
       return await fn(req, res);
@@ -21,8 +22,9 @@ app.use(express.static("build"));
 
 app.get(
   "/",
-  handleErrors(async function (req, res) {
-    // render(req.url, res);
+  withErrorHandler(async function (req, res) {
+    const html = GetRenderedClient(req);
+    res.send(html);
   })
 );
 
@@ -40,11 +42,9 @@ app
       case "EACCES":
         console.error(bind + " requires elevated privileges");
         process.exit(1);
-        break;
       case "EADDRINUSE":
         console.error(bind + " is already in use");
         process.exit(1);
-        break;
       default:
         throw error;
     }
