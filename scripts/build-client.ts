@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import rimraf from "rimraf";
 import webpack from "webpack";
+import { Config as SWCConfig } from "@swc/core";
+import { GetSwcConfig } from "./libs/getSwcConfig";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -29,6 +31,8 @@ if (
   process.exit(1);
 }
 
+const swcConfig = GetSwcConfig(isProduction);
+
 webpack(
   {
     mode: isProduction ? "production" : "development",
@@ -47,39 +51,7 @@ webpack(
             options: {
               // This makes swc-loader invoke swc synchronously on dev build to get correct error message.
               sync: isProduction ? true : false,
-              jsc: {
-                parser: {
-                  syntax: "typescript",
-                  tsx: true,
-                  dynamicImport: true,
-                },
-                transform: {
-                  react: {
-                    pragma: "React.createElement",
-                    pragmaFrag: "React.Fragment",
-                    throwIfNamespace: true,
-                    development: isProduction ? true : false,
-                    useBuiltins: false,
-                    runtime: "automatic",
-                  },
-                },
-                target: "es2016",
-                keepClassNames: true,
-                loose: true,
-                baseUrl: path.join(__dirname, "..", "src-client"),
-                paths: {
-                  "@page-components/*": ["page-components/*"],
-                  "@models/*": ["../models/*"],
-                },
-              },
-              module: {
-                type: "commonjs",
-                strict: true,
-                strictMode: true,
-                lazy: false,
-                noInterop: true,
-              },
-              sourceMaps: "inline",
+              ...swcConfig,
             },
           },
         },
