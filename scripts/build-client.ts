@@ -3,7 +3,6 @@ import fs from "fs";
 import path from "path";
 import rimraf from "rimraf";
 import webpack from "webpack";
-import { Config as SWCConfig } from "@swc/core";
 import { GetSwcConfig } from "./libs/getSwcConfig";
 
 const isProduction = process.env.NODE_ENV === "production";

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src-client",
+    "baseUrl": "src/client",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -17,11 +17,11 @@
     "outDir": "build",
     "paths": {
       "@page-components/*": ["page-components/*"],
-      "@models/*": ["../models/*"],
-      "@configs/*": ["../configs/*"]
+      "@models/*": ["page-components/../../models/*"],
+      "@configs/*": ["page-components/../../configs/*"]
     },
     "sourceMap": true
   },
   "exclude": ["node_modules"],
-  "include": ["src-client"]
+  "root": ["src/client"]
 }
