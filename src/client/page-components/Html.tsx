@@ -1,5 +1,5 @@
-import { ConfigApp } from "@configs/app";
-import { EnumAppAssetDataType, TypeAssetManifest } from "@models/index";
+import { ConfigApp } from "../../../configs";
+import { EnumAppAssetDataType, TypeAssetManifest } from "../../../models";
 import React, { PropsWithChildren } from "react";
 import { AssetLinkCSS } from "./AssetLink";
 

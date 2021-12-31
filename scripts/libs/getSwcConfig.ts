@@ -1,13 +1,11 @@
 import { Config, JscConfig } from "@swc/core";
 import { GetRootTsConfig } from "./getTsConfig";
-import path from "path";
 
 function GetPathsConfig(): JscConfig {
   const tsConfig = GetRootTsConfig();
   if (tsConfig?.compilerOptions?.baseUrl && tsConfig?.compilerOptions.paths) {
-    const projectRoot = process.cwd();
     return {
-      baseUrl: path.join(projectRoot, tsConfig.compilerOptions.baseUrl),
+      baseUrl: tsConfig.compilerOptions.baseUrl,
       paths: tsConfig.compilerOptions.paths as JscConfig["paths"],
     };
   }
