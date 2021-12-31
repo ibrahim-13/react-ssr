@@ -1,4 +1,5 @@
 export enum EnumAppAssetDataType {
+  NONE = "none",
   CSS = "css",
   JS = "JS",
 }
