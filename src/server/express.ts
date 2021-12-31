@@ -1,3 +1,4 @@
+require("@swc/register");
 import express from "express";
 import type { Request, Response, NextFunction } from "express";
 import { GetRenderedClient } from "./client-renderer";
@@ -49,3 +50,5 @@ app
         throw error;
     }
   });
+
+export {};

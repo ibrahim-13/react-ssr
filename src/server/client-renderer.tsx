@@ -1,5 +1,5 @@
 import { renderToString } from "react-dom/server";
-import type { Request, Response } from "express";
+import type { Request } from "express";
 import { ClientApp } from "../client/App";
 import { GetAssets } from "./getAssets";
 
