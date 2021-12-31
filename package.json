@@ -7,6 +7,7 @@
     "build:client": "ts-node scripts/build-client.ts",
     "build:client:dev": "cross-env NODE_ENV=development ts-node -- scripts/build-client.ts",
     "build:client:prod": "cross-env NODE_ENV=production nodemon -- scripts/build-client.ts",
+    "server:dev": "cross-env NODE_ENV=development ts-node -- src/server/express.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
